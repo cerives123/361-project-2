@@ -1,8 +1,8 @@
 public class Item {
-    private int id;
-    private double value;
-    private double weight;
-    private double factor;
+    private final int id;
+    private final double value;
+    private final double weight;
+    private final double factor;
 
     public Item(int id, double value, double weight, double factor){
         this.id = id;
@@ -27,12 +27,8 @@ public class Item {
         return factor;
     }
 
-    public void setFactor(double factor) {
-        this.factor = factor;
-    }
-
     @Override
     public String toString(){
-        return "Item[ID: "+ id+", Weight: " + weight+", Value: "+value+", Priority: "+factor;
+        return "Item: ID: "+ id+", Weight: " + weight+", Value: "+value+", Priority: "+factor;
     }
 }

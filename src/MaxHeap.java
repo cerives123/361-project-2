@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MaxHeap {
-    private List<Item> heap;
+    private final List<Item> heap;
     public MaxHeap(Item[] items){
         heap = new ArrayList<>();
         for(Item i:items){
-            heap.add(i);
+            add(i);
         }
         makeHeap();
     }
@@ -25,12 +25,14 @@ public class MaxHeap {
         if (heap.isEmpty()){
             return null;
         }
-        Item max = heap.getFirst();
-        Item tail = heap.getLast();
-
-        if(!heap.isEmpty()){
+        Item max = heap.get(0);
+        if(heap.size()>1){
+            Item tail = heap.get(heap.size()-1);
             heap.set(0,tail);
+            heap.remove(heap.size()-1);
             downwardHeapify(0);
+        }else{
+            heap.remove(0);
         }
         return max;
     }
@@ -64,5 +66,8 @@ public class MaxHeap {
         Item temp = heap.get(a);
         heap.set(a, heap.get(b));
         heap.set(b, temp);
+    }
+    public boolean isEmpty(){
+        return heap.isEmpty();
     }
 }
